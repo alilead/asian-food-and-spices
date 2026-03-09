@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { MapPin, Mail, Phone, Heart } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import logo from '@/assets/logo.png';
+import logo from '@/assets/logo.jpeg';
 
 const Footer = () => {
   const { t, language } = useLanguage();
@@ -13,7 +13,7 @@ const Footer = () => {
           {/* About */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-6">
-              <img src={logo} alt="Asian food and spices" className="h-14 w-auto brightness-0 invert" />
+              <img src={logo} alt="Asian food Grocery Servette" className="h-14 w-auto" />
               <div>
                 <span className="font-display text-lg font-bold block">Asian food and spices</span>
                 <span className="text-xs text-background/60 uppercase tracking-wider">SÀRL • Genève</span>

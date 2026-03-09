@@ -5,7 +5,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { useCart } from '@/contexts/CartContext';
 import { useState } from 'react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import logo from '@/assets/logo.png';
+import logo from '@/assets/logo.jpeg';
 
 const Header = () => {
   const { language, setLanguage, t } = useLanguage();
@@ -24,13 +24,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
-            <img src={logo} alt="Asian food and spices" className="h-12 md:h-14 w-auto" />
-            <div className="flex flex-col">
-              <span className="font-display text-base md:text-lg font-bold text-primary leading-tight">
-                Asian food and spices
-              </span>
-              <span className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-wider">SÀRL • Genève</span>
-            </div>
+            <img src={logo} alt="Asian food Grocery Servette" className="h-12 md:h-14 w-auto object-contain" />
           </Link>
           
           {/* Desktop Navigation */}
