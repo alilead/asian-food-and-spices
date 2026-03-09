@@ -179,7 +179,7 @@ const Checkout = () => {
                     <div className="flex-1">
                       <p className="font-medium">{t('delivery')}</p>
                       <p className="text-sm text-muted-foreground">
-                        {language === 'fr' ? 'Livraison à votre adresse' : 'Delivery to your address'}
+                        {t('deliveryToAddress')}
                       </p>
                     </div>
                   </label>
@@ -270,10 +270,7 @@ const Checkout = () => {
                   className="w-full"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting 
-                    ? (language === 'fr' ? 'Traitement...' : 'Processing...')
-                    : t('placeOrder')
-                  }
+                  {isSubmitting ? t('processing') : t('placeOrder')}
                 </Button>
               </div>
             </div>

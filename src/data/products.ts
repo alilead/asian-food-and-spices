@@ -14,7 +14,6 @@ export interface Category {
   id: string;
   name: string;
   nameFr: string;
-  icon: string;
   count: number;
 }
 
@@ -137,10 +136,10 @@ export const products: Product[] = [
 ];
 
 export const categories: Category[] = [
-  { id: "seafood", name: "Fresh Seafood & Fish", nameFr: "Poissons & Fruits de Mer Frais", icon: "🐟", count: 11 },
-  { id: "butcher", name: "Butcher", nameFr: "Boucherie", icon: "🥩", count: 4 },
-  { id: "rice", name: "Rice & Grains", nameFr: "Riz & Céréales", icon: "🍚", count: 38 },
-  { id: "pantry", name: "Pantry & Canned Goods", nameFr: "Épicerie & Conserves", icon: "🥫", count: 15 },
-  { id: "produce", name: "Fresh Produce", nameFr: "Fruits & Légumes Frais", icon: "🥬", count: 13 },
-  { id: "frozen", name: "Frozen & Misc", nameFr: "Surgelés & Divers", icon: "❄️", count: 8 },
+  { id: "seafood", name: "Fresh Seafood & Fish", nameFr: "Poissons & Fruits de Mer Frais", count: 11 },
+  { id: "butcher", name: "Butcher", nameFr: "Boucherie", count: 4 },
+  { id: "rice", name: "Rice & Grains", nameFr: "Riz & Céréales", count: 38 },
+  { id: "pantry", name: "Pantry & Canned Goods", nameFr: "Épicerie & Conserves", count: 15 },
+  { id: "produce", name: "Fresh Produce", nameFr: "Fruits & Légumes Frais", count: 13 },
+  { id: "frozen", name: "Frozen & Misc", nameFr: "Surgelés & Divers", count: 8 },
 ];

@@ -13,29 +13,24 @@ const Newsletter = () => {
     e.preventDefault();
     if (email) {
       toast({
-        title: language === 'fr' ? 'Bienvenue!' : 'Welcome!',
-        description: language === 'fr' 
-          ? 'Vous êtes maintenant inscrit à notre newsletter.'
-          : 'You are now subscribed to our newsletter.',
+        title: t('welcomeToast'),
+        description: t('welcomeToastDesc'),
       });
       setEmail('');
     }
   };
   
   const benefits = [
-    { icon: Gift, text: language === 'fr' ? 'Offres exclusives' : 'Exclusive offers' },
-    { icon: ChefHat, text: language === 'fr' ? 'Recettes authentiques' : 'Authentic recipes' },
-    { icon: Sparkles, text: language === 'fr' ? 'Nouveaux arrivages' : 'New arrivals' },
+    { icon: Gift, text: t('exclusiveOffers') },
+    { icon: ChefHat, text: t('authenticRecipes') },
+    { icon: Sparkles, text: t('newArrivals') },
   ];
   
   return (
     <section className="py-20 bg-gradient-to-br from-primary via-primary to-primary/80 text-primary-foreground relative overflow-hidden">
-      {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-white/5 rounded-full -translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/5 rounded-full translate-x-1/3 translate-y-1/3" />
-      <div className="absolute top-1/2 left-1/4 text-6xl opacity-10">🌶️</div>
-      <div className="absolute top-1/3 right-1/4 text-5xl opacity-10">⭐</div>
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
@@ -80,9 +75,7 @@ const Newsletter = () => {
           </form>
           
           <p className="text-primary-foreground/60 text-sm mt-4">
-            {language === 'fr' 
-              ? '🔒 Nous respectons votre vie privée. Désabonnement à tout moment.'
-              : '🔒 We respect your privacy. Unsubscribe anytime.'}
+            {t('privacyNote')}
           </p>
         </div>
       </div>

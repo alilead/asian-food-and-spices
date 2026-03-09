@@ -24,10 +24,8 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
-      title: language === 'fr' ? 'Message envoyé!' : 'Message sent!',
-      description: language === 'fr'
-        ? 'Nous vous répondrons dans les plus brefs délais.'
-        : 'We will respond to you as soon as possible.',
+      title: t('messageSent'),
+      description: t('messageSentDesc'),
     });
     setFormData({ name: '', email: '', subject: '', message: '' });
   };
@@ -41,9 +39,7 @@ const Contact = () => {
             {t('contactUs')}
           </h1>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            {language === 'fr'
-              ? 'Une question? Nous sommes là pour vous aider. Contactez-nous par email, téléphone ou venez nous rendre visite!'
-              : 'Have a question? We are here to help. Contact us by email, phone, or visit us!'}
+            {t('contactIntro')}
           </p>
         </div>
         
@@ -62,7 +58,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">
-                      {language === 'fr' ? 'Adresse' : 'Address'}
+                      {t('addressLabel')}
                     </h3>
                     <p className="text-primary-foreground/80">
                       Rue du Commerce 15<br />
@@ -76,7 +72,7 @@ const Contact = () => {
                     <Mail className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-1">Email</h3>
+                    <h3 className="font-semibold mb-1">{t('email')}</h3>
                     <a 
                       href="mailto:info@asiamarket-geneve.ch"
                       className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
@@ -91,8 +87,8 @@ const Contact = () => {
                     <Phone className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-1">
-                      {language === 'fr' ? 'Téléphone' : 'Phone'}
+<h3 className="font-semibold mb-1">
+                    {t('phone')}
                     </h3>
                     <a 
                       href="tel:+41221234567"
@@ -133,13 +129,13 @@ const Contact = () => {
           <div>
             <div className="bg-card border border-border rounded-xl p-8">
               <h2 className="font-display text-2xl font-bold mb-6">
-                {language === 'fr' ? 'Envoyez-nous un message' : 'Send us a message'}
+                {t('sendMessage')}
               </h2>
               
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
                   <Label htmlFor="name">
-                    {language === 'fr' ? 'Nom complet' : 'Full Name'} *
+                    {t('fullName')} *
                   </Label>
                   <Input
                     id="name"
@@ -166,7 +162,7 @@ const Contact = () => {
                 
                 <div>
                   <Label htmlFor="subject">
-                    {language === 'fr' ? 'Sujet' : 'Subject'} *
+                    {t('subject')} *
                   </Label>
                   <Input
                     id="subject"
@@ -179,7 +175,7 @@ const Contact = () => {
                 </div>
                 
                 <div>
-                  <Label htmlFor="message">Message *</Label>
+                  <Label htmlFor="message">{t('messageLabel')} *</Label>
                   <Textarea
                     id="message"
                     name="message"
@@ -193,7 +189,7 @@ const Contact = () => {
                 
                 <Button type="submit" className="w-full gap-2">
                   <Send className="h-4 w-4" />
-                  {language === 'fr' ? 'Envoyer' : 'Send'}
+                  {t('send')}
                 </Button>
               </form>
             </div>

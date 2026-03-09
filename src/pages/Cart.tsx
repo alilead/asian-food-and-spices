@@ -21,9 +21,7 @@ const Cart = () => {
               {t('cartEmpty')}
             </h1>
             <p className="text-muted-foreground mb-6">
-              {language === 'fr' 
-                ? 'Découvrez nos produits et ajoutez-les à votre panier.'
-                : 'Discover our products and add them to your cart.'}
+              {t('cartEmptyDesc')}
             </p>
             <Button asChild>
               <Link to="/shop">{t('continueShopping')}</Link>

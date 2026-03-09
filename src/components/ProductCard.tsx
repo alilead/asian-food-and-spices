@@ -22,10 +22,8 @@ const ProductCard = ({ product }: ProductCardProps) => {
     e.stopPropagation();
     addToCart(product);
     toast({
-      title: language === 'fr' ? 'Produit ajouté!' : 'Product added!',
-      description: language === 'fr' 
-        ? `${product.nameFr} a été ajouté au panier`
-        : `${product.name} has been added to cart`,
+      title: t('productAdded'),
+      description: `${language === 'fr' ? product.nameFr : product.name} ${t('addedToCartSuffix')}`,
     });
   };
   

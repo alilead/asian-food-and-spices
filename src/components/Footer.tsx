@@ -23,10 +23,10 @@ const Footer = () => {
               {t('aboutText')}
             </p>
             {/* Social proof */}
-            <div className="flex items-center gap-2 text-accent">
+            <div className="flex items-center gap-2 text-white/80">
               <Heart className="h-4 w-4 fill-current" />
               <span className="text-sm text-background/70">
-                {language === 'fr' ? 'Fait avec passion à Genève' : 'Made with passion in Geneva'}
+                {t('madeWithPassion')}
               </span>
             </div>
           </div>
@@ -118,7 +118,7 @@ const Footer = () => {
           <p>© 2026 Asian food and spices SÀRL. {t('allRightsReserved')}.</p>
           <p className="flex items-center gap-2">
             <span>🇨🇭</span>
-            {language === 'fr' ? 'Épicerie asiatique à Genève' : 'Asian grocery in Geneva'}
+            {t('footerTagline')}
           </p>
         </div>
       </div>

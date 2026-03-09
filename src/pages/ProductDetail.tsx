@@ -22,7 +22,7 @@ const ProductDetail = () => {
       <Layout>
         <div className="container mx-auto px-4 py-16 text-center">
           <h1 className="text-2xl font-bold mb-4">
-            {language === 'fr' ? 'Produit non trouvé' : 'Product not found'}
+            {t('productNotFound')}
           </h1>
           <Button asChild>
             <Link to="/shop">{t('backToShop')}</Link>
@@ -39,10 +39,8 @@ const ProductDetail = () => {
   const handleAddToCart = () => {
     addToCart(product, quantity);
     toast({
-      title: language === 'fr' ? 'Produit ajouté!' : 'Product added!',
-      description: language === 'fr'
-        ? `${quantity}x ${product.nameFr} ajouté au panier`
-        : `${quantity}x ${product.name} added to cart`,
+      title: t('productAdded'),
+      description: `${quantity}x ${language === 'fr' ? product.nameFr : product.name} ${t('addedToCartWithQty')}`,
     });
   };
   
@@ -89,9 +87,7 @@ const ProductDetail = () => {
             </p>
             
             <p className="text-muted-foreground mb-8">
-              {language === 'fr' 
-                ? 'Produit authentique importé directement d\'Asie. Qualité garantie.'
-                : 'Authentic product imported directly from Asia. Quality guaranteed.'}
+              {t('productGuarantee')}
             </p>
             
             {/* Quantity */}

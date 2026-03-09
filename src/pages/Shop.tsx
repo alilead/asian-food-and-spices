@@ -86,9 +86,8 @@ const Shop = () => {
                 variant={selectedCategory === category.name ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => handleCategoryClick(category.name)}
-                className="rounded-full gap-1"
+                className="rounded-full"
               >
-                <span>{category.icon}</span>
                 {language === 'fr' ? category.nameFr : category.name}
               </Button>
             ))}
@@ -97,7 +96,7 @@ const Shop = () => {
           {/* Active Filters */}
           {(search || selectedCategory) && (
             <div className="flex items-center gap-2">
-              <span className="text-sm text-muted-foreground">Filtres actifs:</span>
+              <span className="text-sm text-muted-foreground">{t('activeFilters')}</span>
               {search && (
                 <span className="inline-flex items-center gap-1 bg-muted px-2 py-1 rounded-full text-sm">
                   "{search}"
@@ -120,7 +119,7 @@ const Shop = () => {
                 onClick={clearFilters}
                 className="text-sm text-primary hover:underline"
               >
-                {language === 'fr' ? 'Tout effacer' : 'Clear all'}
+                {t('clearAll')}
               </button>
             </div>
           )}
@@ -139,7 +138,7 @@ const Shop = () => {
               {t('noProductsFound')}
             </p>
             <Button onClick={clearFilters} variant="outline">
-              {language === 'fr' ? 'Voir tous les produits' : 'View all products'}
+              {t('viewAllProducts')}
             </Button>
           </div>
         )}
