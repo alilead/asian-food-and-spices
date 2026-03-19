@@ -71,3 +71,16 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+
+## Product catalog (CSV + images)
+
+1. Put your export CSV at `%USERPROFILE%\Downloads\product_catalog_820.csv` (or pass `--csv`).
+2. Put image files in a folder named `product_images_all` at the project root (or pass `--images`).  
+   If that folder is missing, the sync script falls back to `product_images_v2`.
+3. Run:
+
+```sh
+npm run sync:catalog
+```
+
+This copies images into `public/product_images/`, writes `src/data/csv-catalog.json`, and the shop merges them with the hand-picked listings in `src/data/legacy-products.ts` (same image filename → updates price/unit; otherwise new products are added). Categories are derived automatically from product names.

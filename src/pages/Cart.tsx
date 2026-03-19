@@ -3,6 +3,7 @@ import Layout from '@/components/Layout';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useCart } from '@/contexts/CartContext';
+import { productImageUrl } from '@/lib/productImageUrl';
 import { Minus, Plus, Trash2, ShoppingBag, ArrowRight } from 'lucide-react';
 
 const Cart = () => {
@@ -50,7 +51,7 @@ const Cart = () => {
                 {/* Image */}
                 <Link to={`/product/${item.product.id}`} className="shrink-0">
                   <img
-                    src={item.product.image}
+                    src={productImageUrl(item.product.image)}
                     alt={language === 'fr' ? item.product.nameFr : item.product.name}
                     className="w-24 h-24 object-cover rounded-lg"
                   />

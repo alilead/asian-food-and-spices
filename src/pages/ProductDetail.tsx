@@ -4,6 +4,7 @@ import Layout from '@/components/Layout';
 import ProductCard from '@/components/ProductCard';
 import { Button } from '@/components/ui/button';
 import { products } from '@/data/products';
+import { productImageUrl } from '@/lib/productImageUrl';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useCart } from '@/contexts/CartContext';
 import { toast } from '@/hooks/use-toast';
@@ -61,7 +62,7 @@ const ProductDetail = () => {
           {/* Image */}
           <div className="aspect-square bg-muted rounded-xl overflow-hidden">
             <img
-              src={product.image}
+              src={productImageUrl(product.image)}
               alt={language === 'fr' ? product.nameFr : product.name}
               className="w-full h-full object-cover"
               onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/placeholder.svg"; }}

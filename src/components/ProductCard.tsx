@@ -4,6 +4,7 @@ import { ShoppingCart, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Product } from '@/data/products';
+import { productImageUrl } from '@/lib/productImageUrl';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useCart } from '@/contexts/CartContext';
 import { toast } from '@/hooks/use-toast';
@@ -32,7 +33,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
       <Link to={`/product/${product.id}`}>
         <div className="relative aspect-square bg-muted overflow-hidden">
           <img
-            src={imgError ? "/placeholder.svg" : product.image}
+            src={imgError ? "/placeholder.svg" : productImageUrl(product.image)}
             alt={language === 'fr' ? product.nameFr : product.name}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             onError={() => setImgError(true)}
