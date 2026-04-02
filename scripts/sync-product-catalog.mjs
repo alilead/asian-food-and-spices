@@ -332,8 +332,11 @@ function resolveSourceFile(imageDir, lookup, filename) {
 
 function main() {
   const args = parseArgs();
+  const repoCsv = path.join(ROOT, 'product_catalog_820.csv');
+  const downloadsCsv = path.join(os.homedir(), 'Downloads', 'product_catalog_820.csv');
   const csvPath =
-    args.csv || path.join(os.homedir(), 'Downloads', 'product_catalog_820.csv');
+    args.csv ||
+    (fs.existsSync(repoCsv) ? repoCsv : downloadsCsv);
   let imageDir = args.images || path.join(ROOT, 'product_images_all');
   if (!fs.existsSync(imageDir)) {
     const fallback = path.join(ROOT, 'product_images_v2');

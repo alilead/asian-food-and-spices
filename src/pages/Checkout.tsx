@@ -8,12 +8,13 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useCart } from '@/contexts/CartContext';
 import { useBusinessAuth } from '@/contexts/BusinessAuthContext';
+import { apiUrl, cartHeaders, CART_SESSION_STORAGE_KEY } from '@/lib/api';
 import { toast } from '@/hooks/use-toast';
 import { ArrowLeft, Truck, Store, Check } from 'lucide-react';
 
 const Checkout = () => {
   const { t, language } = useLanguage();
-  const { items, getTotal, clearCart } = useCart();
+  const { items, getTotal, clearCart, useBackendCart } = useCart();
   const { customerType, minimumRetailOrderChf, isBusinessAuthenticated, businessProfile } = useBusinessAuth();
   const navigate = useNavigate();
   const subtotal = getTotal();
@@ -50,17 +51,50 @@ const Checkout = () => {
       return;
     }
     setIsSubmitting(true);
-    
-    // Simulate order processing
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    
-    setOrderComplete(true);
-    clearCart();
-    
-    toast({
-      title: t('orderSuccess'),
-      description: t('orderSuccessMessage'),
-    });
+
+    try {
+      if (useBackendCart) {
+        const cartId = localStorage.getItem(CART_SESSION_STORAGE_KEY);
+        const res = await fetch(apiUrl('/api/orders'), {
+          method: 'POST',
+          headers: cartHeaders(cartId),
+          body: JSON.stringify({
+            ...formData,
+            customerType: isBusinessAuthenticated ? 'business' : 'retail',
+          }),
+        });
+        const body = (await res.json().catch(() => ({}))) as {
+          error?: string;
+          minimumRetailOrderChf?: number;
+          orderId?: string;
+        };
+        if (!res.ok) {
+          toast({
+            variant: 'destructive',
+            title: language === 'fr' ? 'Commande refusée' : 'Order failed',
+            description:
+              body.error === 'Minimum order not met'
+                ? language === 'fr'
+                  ? `Montant minimum CHF ${body.minimumRetailOrderChf?.toFixed(2) ?? '50.00'}`
+                  : `Minimum order CHF ${body.minimumRetailOrderChf?.toFixed(2) ?? '50.00'}`
+                : body.error || (language === 'fr' ? 'Réessayez plus tard.' : 'Please try again.'),
+          });
+          return;
+        }
+      } else {
+        await new Promise((resolve) => setTimeout(resolve, 800));
+      }
+
+      setOrderComplete(true);
+      clearCart();
+
+      toast({
+        title: t('orderSuccess'),
+        description: t('orderSuccessMessage'),
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   
   if (items.length === 0 && !orderComplete) {

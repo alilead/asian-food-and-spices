@@ -2,6 +2,18 @@
   command = "npm run build"
   publish = "dist"
 
+[functions]
+  node_bundler = "esbuild"
+  # Ensure catalog JSON is packaged with the API function
+  included_files = ["netlify/functions/data/**"]
+
+# API (Express via serverless-http)
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api"
+  status = 200
+  force = true
+
 # SPA: all routes serve index.html for client-side routing (React Router)
 [[redirects]]
   from = "/*"
